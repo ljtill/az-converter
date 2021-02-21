@@ -22,7 +22,4 @@ namespace Microsoft.Azure.Converter.Types
         [JsonExtensionData]
         public Dictionary<string, object> PolicyRule { get; set; }
     }
-
-
-
 }
