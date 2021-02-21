@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using Microsoft.Azure.Converter.Types;
+using Microsoft.Azure.Converter.FileSystem;
 
 namespace Microsoft.Azure.Converter
 {
@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Converter
         {
             string inputDirectory = "data/";
             string outputDirectory = "output/";
-            FileInfo[] files = FindFiles(inputDirectory);
+            FileInfo[] files = Files.FindFiles(inputDirectory);
 
             foreach (FileInfo file in files)
             {
@@ -27,33 +27,6 @@ namespace Microsoft.Azure.Converter
                 ExportResourceTemplate(definition, outputDirectory, fileName);
             }
 
-        }
-
-        /// <summary>
-        /// FindFiles
-        /// </summary>
-        private static FileInfo[] FindFiles(string path)
-        {
-            DirectoryInfo info = new DirectoryInfo(path);
-            FileInfo[] files = null;
-
-            System.Console.WriteLine("Retrieving directory files");
-            try
-            {
-                if (!info.Exists)
-                {
-                    Console.WriteLine("Unable to locate directory");
-                    Environment.Exit(1);
-                }
-
-                files = info.GetFiles();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("The process failed: {0}", e.ToString());
-            }
-
-            return files;
         }
 
         /// <summary>
