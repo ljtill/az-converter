@@ -1,0 +1,21 @@
+name: ""
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: Install
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.x"
+      - name: build
+        run: dotnet build .
+        working-directory: src/
