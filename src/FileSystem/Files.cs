@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Converter.FileSystem
             DirectoryInfo info = new DirectoryInfo(path);
             FileInfo[] files = null;
 
-            Console.WriteLine("Retrieving directory files");
+            Console.WriteLine("Retrieving files");
             try
             {
                 if (!info.Exists)
